@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>CheckString</Title>
+      <Author>master</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>CLASSID</ID>
+          <ToolTip>Class name</ToolTip>
+          <Default>CLASSID</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>TABLE</ID>
+          <ToolTip>Class name</ToolTip>
+          <Default>TABLE</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>FIELD</ID>
+          <ToolTip>Field name</ToolTip>
+          <Default>FIELD</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[
+      if (string.IsNullOrWhiteSpace(obj.$FIELD$))
+        errs.Add("$FIELD$", msgNoValue);
+      else if (Db.$TABLE$.Any(x => x.$FIELD$ == obj.$FIELD$.Trim() && x.$CLASSID$ != obj.$CLASSID$))
+        errs.Add("$FIELD$", msgNoUnique);]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

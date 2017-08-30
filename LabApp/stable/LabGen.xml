@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<AppConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+    <Prop Name="ConnectionString">
+      <Value>Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\LabApp\stable\db\LabBase.mdf</Value>
+    </Prop>
+    <Prop Name="AppMode">
+      <Value/>
+    </Prop>
+    <Prop Name="LinkFilesPath">
+      <Value>C:\LabApp\stable\files</Value>
+    </Prop>
+    <Prop Name="RepSamples">
+      <Value>C:\LabApp\stable\reports\RepSamples.xlsx</Value>
+    </Prop>
+</AppConfig>

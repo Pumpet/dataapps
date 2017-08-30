@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>OnExecCommand</Title>
+      <Author>master</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>dataList1</ID>
+          <ToolTip>dataList1</ToolTip>
+          <Default>dataList1</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>COMMAND</ID>
+          <ToolTip>COMMAND</ToolTip>
+          <Default>COMMAND</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[    private object $dataList1$_OnExecCommand(string cmd, object key, object filter, object data)
+    {
+      if (cmd == "$COMMAND$")
+      {
+        
+        return null;
+      }
+      else if ($dataList1$.DoExecCommand != null)
+      {
+        return $dataList1$.DoExecCommand(cmd, key, filter, data);
+      }
+      else
+        return null;
+    }
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>DataController</Title>
+      <Author>Admin</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>CLASS</ID>
+          <ToolTip>Class</ToolTip>
+          <Default>CLASS</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>TABLE</ID>
+          <ToolTip>Table</ToolTip>
+          <Default>TABLE</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>PARENTCLASS</ID>
+          <ToolTip>Parent Class</ToolTip>
+          <Default>PARENTCLASS</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>PARENTTABLE</ID>
+          <ToolTip>Parent Table</ToolTip>
+          <Default>PARENTTABLE</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$" Kind="method decl"><![CDATA[    public DB Db { get { return (DB)db; } }
+
+    public Data$TABLE$(DB context, string name = "Main", DataObject p = null) : base(context, name, p) { }
+    //-------------------------------------------------------------------------
+    public override object GetEntity(object key)
+    {
+      if (key == null || !KeyExists<int>(key, "$CLASS$Id")) return typeof($CLASS$);
+      return GetObject(key);
+    }
+    //-------------------------------------------------------------------------
+    public override object GetObject(object key)
+    {
+      CheckKey<int>(key, "$CLASS$Id");
+      return Db.$TABLE$.Where(x => x.$CLASS$Id == GetKey<int>(key, "$CLASS$Id")).SingleOrDefault();
+    }
+    //-------------------------------------------------------------------------
+    public override void GetDataBinds(object key, object filter)
+    {
+      DataBinds.Add("$PARENTCLASS$", null);
+      GetParentFuncs.Add("$PARENTCLASS$", (new Data$PARENTTABLE$(Db)).GetEntity);
+    }
+    //-------------------------------------------------------------------------
+    public override object GetList(object key, object filter)
+    {
+      ChangeContext(new DB(conn));
+      return Db.$TABLE$.Select(x => x);
+    }
+    //-------------------------------------------------------------------------
+    public override void GetEditData(object key, bool add, object addKey)
+    {
+      var obj = GetEntityEditData<$CLASS$>(key, add, addKey);
+      DataBinds["$PARENTCLASS$"] = obj.$PARENTCLASS$ ?? (object)typeof($PARENTCLASS$);
+    }
+    //-------------------------------------------------------------------------
+    public override void SetDefaults(object data, object addKey)
+    {
+      $CLASS$ obj = ($CLASS$)data;
+    }
+    //-------------------------------------------------------------------------
+    public override void Delete(object[] keys)
+    {
+      DeleteEntities<$CLASS$>(keys, Db.$TABLE$, null);
+    }
+    //-------------------------------------------------------------------------
+    public override bool Save(object data, bool add) 
+    {
+      return SaveEntity<$CLASS$>(Db.$TABLE$, data, add);
+    }
+    //-------------------------------------------------------------------------
+    public override void CloneEntity(object src, object dst)
+    {
+      $CLASS$ obj = ($CLASS$)src, res = ($CLASS$)dst;
+    }
+    //-------------------------------------------------------------------------
+    protected override void CheckEntity(object data, Dictionary<string, string> errs)
+    {
+      $CLASS$ obj = ($CLASS$)data;
+    }
+    //-------------------------------------------------------------------------
+    public override object ExecCommand(string command, object key, object filter, object data, object[] keys)
+    {
+      return null;
+    }
+    //-------------------------------------------------------------------------
+    public override void SetCommands(object cmds, object key, object data, object[] keys, string code)
+    {
+      if (!(cmds is Dictionary<string, Action<string>>))
+        return;
+      var cs = (Dictionary<string, Action<string>>)cmds;
+    }
+]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>ParentDefault</Title>
+      <Author>master</Author>
+      <Description>
+      </Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>
+      </Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>PARENTID</ID>
+          <ToolTip>Parent Id</ToolTip>
+          <Default>PARENTID</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>PARENTCLASS</ID>
+          <ToolTip>Parent Class</ToolTip>
+          <Default>PARENTCLASS</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>PARENTTABLE</ID>
+          <ToolTip>Parent Table</ToolTip>
+          <Default>PARENTTABLE</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[
+      if (KeyExists<int>(addKey, "$PARENTID$"))
+      {
+        obj.$PARENTCLASS$ = ($PARENTCLASS$)(new Data$PARENTTABLE$(Db)).GetObject(addKey);
+        if (obj.$PARENTCLASS$ != null) obj.$PARENTID$ = KeyValue<int>(addKey, "$PARENTID$");
+      }]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
